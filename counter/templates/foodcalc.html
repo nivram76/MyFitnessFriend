@@ -1,0 +1,125 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+    <title>Nutritional Food Calculator</title>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="{% url 'foodcalc' %}">Nutritional Calculator</a>
+        <a href="{% url 'tdee' %}">TDEE Calculator</a>
+    </div>
+
+    <div class="container">
+        
+        <div class="row justify-content-center">        
+            <div class="col-md-8 text-center">
+                <img src="{% static 'images/logo.jpg'%}" class=" img-responsive logo mb-5 mt-5" />
+                <form method="post">
+                    {%csrf_token%}
+                    <div class="input-group input-group-lg mb-5">
+                        <input type="text" name="query" class="form-control inputstyle"
+                            placeholder="search for calories in your food..." required>
+                        <button class="btn whoop" type="submit" id="button-addon2">Find calories</button>
+                    </div>
+                </form>
+                {%if api%}
+                {%if api == "Error"%}
+                <div class="alert alert-warning"> Oh no! something went wrong. Please try again. </div>
+                {%else%}
+                <h1> {{api.0.name}} has a total of <strong> {{api.0.calories}} Calories</strong>
+                </h1>
+
+                <div class="alert alert-danger d-flex align-items-center mt-3" role="alert">
+                    <div>
+                        This food contains an high amount of sodium. High sodium can lead to dehydration, water
+                        retention, or possibly longer term issues relating to cardiovascular health.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center mt-5 mb-5">
+                <div class="col-md-10 caloriescont shadow rounded">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <h2 class="mt-3 mb-4">Nutritional Values </h2><span></span>
+                            <ul>
+                                <li class="servingsize">Serving Size per 100/Grams <span class="float-end"></span></li>
+                                <li>Carbohydrates (g): <span class="float-end">{{api.0.carbohydrates_total_g}}</span>
+                                </li>
+                                <li>Cholesterol (mg): <span class="float-end">{{api.0.cholesterol_mg}}</span></li>
+                                <li>Total fat (g): <span class="float-end">{{api.0.fat_total_g}}</span></li>
+                                <li>Saturated Fat (g): <span class="float-end">{{api.0.fat_saturated_g}}</span></li>
+                                <li>Fiber (g): <span class="float-end">{{api.0.fiber_g}}</span></li>
+                                <li>Potassium (mg) <span class="float-end">{{api.0.potassium_mg}}</span></li>
+                                <li>Protein (g): <span class="float-end">{{api.0.protein_g}}<span></li>
+                                <li>Sodium (mg):<span class="float-end">{{api.0.sodium_mg}}</span></li>
+                                <li>Sugar (g): <span class="float-end">{{api.0.sugar_g}}</span></li>
+                            </ul>
+                        </div>
+                        <!-- IMPLEMENTING FEATURE THAT WILL TAKE IN THE INDIVIDUALS PERSONAL WEIGHT/MEASUREMNTS
+                                so the estimates of exercises to burn x amount of calories is more accurate
+                        <div class="col-md-6 mb-5">
+                            <h4 class="mt-3 mb-4">To burn 100 calories you will have to</h4>
+                            <div class="d-flex align-items-center mb-5">
+                                <div class="flex-shrink-0">
+                                    <img src="{% static 'images/running.png'%}" alt="...">
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h5> Jog </h5>
+                                    <p>you will have to jog for <strong>
+                                            20</strong> Minutes</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-5">
+                                <div class="flex-shrink-0">
+                                    <img src="{%static 'images/yoga.png'%}" alt="...">
+                                </div>
+                                <div class="flex-grow-1 ms-4">
+                                    <h5> Do Power Yoga </h5>
+                                    <p>you will have to Power Yoga for <strong>
+                                            20 </strong> Minutes</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-5">
+                                <div class="flex-shrink-0">
+                                    <img src="{%static 'images/weightlifter.png'%}" alt="...">
+                                </div>
+                                <div class="flex-grow-1 ms-4">
+                                    <h5>Get a Gym Workout </h5>
+                                    <p>you will have to lift weight for <strong>
+                                            20 </strong> Minutes </p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                    <img src="{%static 'images/walking.png'%}" alt="...">
+                                </div>
+                                <div class="flex-grow-1 ms-1">
+                                    <h5> Go for a Brisk Walk </h5>
+                                    <p>you will have to brisk walk for <strong>
+                                            20 </strong> Minutes</p>
+                                </div>
+                            </div>
+                        </div>
+                    -->
+                    </div>
+                </div>
+                {%endif%}
+                {%endif%}
+            </div>
+</body>
+
+</html>

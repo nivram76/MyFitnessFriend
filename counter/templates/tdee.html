@@ -1,0 +1,44 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+        <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+        <title>TDEE Calculator</title>
+<body>
+
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="{% url 'foodcalc' %}">Nutritional Calculator</a>
+        <a href="{% url 'tdee' %}">TDEE Calculator</a>
+    </div>
+
+    <form method="post" action="{%url 'tdee' %}">
+        {%csrf_token%}
+
+        <label for="age"> {{form.age.label}} </label>
+        {{form.age}}
+
+        <label for="sex"> {{form.sex.label}} </label>
+        {{form.sex}}
+
+        <label for="weight"> {{form.weight.label}} </label>
+        {{form.weight}}
+
+        <label for="height"> {{form.height.label}} </label>
+        {{form.height}}
+
+        <label for="activity_lvl"> {{form.activity_lvl.label}} </label>
+        {{form.activity_lvl}}
+
+        <button type= "submit">Calculate</button>
+    </form>
+
+
+</body>
+</html>

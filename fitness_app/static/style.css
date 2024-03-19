@@ -1,0 +1,97 @@
+body {
+  background-color: #ffffff;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #090808;
+  text-align: center;
+  padding: 20px 20px;
+  width: 25%; 
+
+  text-decoration: none;
+
+}
+
+.navbar a:hover {
+  background-color: #ddd; 
+  color: black;
+}
+
+.logo {
+  position: relative; 
+  margin-bottom: -20px; 
+}
+
+/* Additional styles for the image */
+.img-responsive.logo {
+  max-width: 100%; /* Ensure the image stays responsive */
+   
+
+}
+
+form {
+  position: relative;
+  margin-top: -20px; /* Adjust the top margin of the form */
+}
+
+h1 {
+  font-weight: 300;
+}
+
+h1 strong {
+  font-weight: 600;
+  color: #4b8673;
+}
+
+.inputstyle {
+  padding: 20px !important;
+}
+
+.whoop {
+  background-color: #5fd068;
+  width: 8em;
+  font-size: 30px !important;
+  color: #ffffff;
+}
+
+.caloriescont {
+  background-color: #ffffff;
+  padding: 30px;
+}
+
+.caloriescont ul {
+  padding: 0px;
+}
+
+.caloriescont ul li {
+  list-style: none;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #efefef;
+  width: 80%;
+}
+
+.caloriescont h3 {
+  color: #4b8673;
+  font-size: 2em;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.caloriescont h5 {
+  color: #4b8673;
+}
+
+.servingsize {
+  background-color: #000000;
+  padding: 10px;
+  color: #ffffff;
+}
