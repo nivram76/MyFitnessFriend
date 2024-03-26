@@ -30,7 +30,11 @@ def tdee(request):
         form= TDEEForm(request.POST) 
         if form.is_valid():
             result=0
-            
+            age = form.cleaned_data['age']
+            sex = form.cleaned_data['sex']
+            weight = form.cleaned_data['weight']
+            height = form.cleaned_data['height']
+            activity_lvl = form.cleaned_data['activity_lvl']
 
     else:
         form= TDEEForm()

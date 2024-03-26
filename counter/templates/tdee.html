@@ -1,44 +1,127 @@
 {% load static%}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
-        <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
-        <title>TDEE Calculator</title>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+    <title>TDEE Calculator</title>
+  </head>
 
-    <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="{% url 'foodcalc' %}">Nutritional Calculator</a>
-        <a href="{% url 'tdee' %}">TDEE Calculator</a>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="logo">
+          <img
+            src="{% static 'images/mfflogo.png'%}"
+            class="mfflogo"
+            alt="MyFitnessFriend Logo"
+          />
+        </div>
+
+        <div class="main-menu">
+          <ul>
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="{% url 'foodcalc' %}">Nutritional Calculator</a>
+            </li>
+            <li>
+              <a href="{% url 'tdee' %}">TDEE Calculator</a>
+            </li>
+            <li>
+              <a class="btn btn-light" href="#">
+                <i class="fas fa-user"></i> Log In
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!--TDEE Introduction + basic info -->
+
+    <div class="intro">
+      <div class="container">
+        <div class="tdee-content">
+          <h1 class="tdee-heading text-m">What is a TDEE Calculator?</h1>
+          <p class="tdee-text">
+            TDEE stands for Total Daily Energy Expenditure, and provides you
+            with the amount of calories you would have to consume to maintain
+            your current weight. It can be used as a guideance in your nutrition
+            to help you gain, lose, or maintain a certain weight.
+          </p>
+          <h1 class="tdee-heading text-m">How is it Calculated?</h1>
+          <p class="tdee-text">
+            The TDEE calculator takes in a variety of factors such as age, sex,
+            weight, and height to combine your basic metabolic rate (BMR) and
+            your activitiy level to calculate an estimate on how many calories
+            your body burns a day.
+          </p>
+        </div>
+      </div>
     </div>
+    <!--TDEE CALC FORM-->
 
-    <form method="post" action="{%url 'tdee' %}">
-        {%csrf_token%}
+    <div class="tdee-calc-form">
+      <div class="container">
+        <div class="calc-content">
+          <form method="post" action="{%url 'tdee' %}">
+            {%csrf_token%}
 
-        <label for="age"> {{form.age.label}} </label>
-        {{form.age}}
+            <div class="calc-field">
+              <label for="age"> {{form.age.label}} </label>
+              {{form.age}}
+            </div>
 
-        <label for="sex"> {{form.sex.label}} </label>
-        {{form.sex}}
+            <div class="calc-field">
+              <label for="sex"> {{form.sex.label}} </label>
+              {{form.sex}}
+            </div>
 
-        <label for="weight"> {{form.weight.label}} </label>
-        {{form.weight}}
+            <div class="calc-field">
+              <label for="weight"> {{form.weight.label}} </label>
+              {{form.weight}}
+            </div>
 
-        <label for="height"> {{form.height.label}} </label>
-        {{form.height}}
+            <div class="calc-field">
+              <label for="height"> {{form.height.label}} </label>
+              {{form.height}}
+            </div>
 
-        <label for="activity_lvl"> {{form.activity_lvl.label}} </label>
-        {{form.activity_lvl}}
+            <div class="calc-field">
+              <label for="activity_lvl"> {{form.activity_lvl.label}} </label>
+              {{form.activity_lvl}}
+            </div>
 
-        <button type= "submit">Calculate</button>
-    </form>
-
-
-</body>
+            <button class="calc-submit" type="submit">Calculate</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
