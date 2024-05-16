@@ -1,0 +1,43 @@
+{% load static %}
+
+<nav class="navbar">
+  <div class="container">
+    <div class="logo">
+      <img
+        src="{% static 'images/mfflogo.png'%}"
+        class="mfflogo"
+        alt="MyFitnessFriend Logo"
+      />
+    </div>
+
+    <div class="main-menu">
+      <ul>
+        <li>
+          <a href="#home">Home</a>
+        </li>
+
+        <li>
+          <a href="#about">About</a>
+        </li>
+
+        <li>
+          <a href="{% url 'foodcalc' %}">Nutritional Calculator</a>
+        </li>
+
+        <li>
+          <a href="{% url 'tdee' %}">TDEE Calculator</a>
+        </li>
+
+        <li>
+          <a href="{% url 'forums' %}"> Forums </a>
+        </li>
+
+        <li>
+          <a class="btn btn-light" href="#">
+            <i class="fas fa-user"></i> Log In
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

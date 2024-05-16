@@ -1,0 +1,64 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+
+<!--TDEE Introduction + basic info -->
+
+<div class="intro">
+  <div class="container">
+    <div class="tdee-content">
+      <h1 class="tdee-heading text-m">What is a TDEE Calculator?</h1>
+      <p class="tdee-text">
+        TDEE stands for Total Daily Energy Expenditure, and provides you with
+        the amount of calories you would have to consume to maintain your
+        current weight. It can be used as a guideance in your nutrition to help
+        you gain, lose, or maintain a certain weight.
+      </p>
+      <h1 class="tdee-heading text-m">How is it Calculated?</h1>
+      <p class="tdee-text">
+        The TDEE calculator takes in a variety of factors such as age, sex,
+        weight, and height to combine your basic metabolic rate (BMR) and your
+        activitiy level to calculate an estimate on how many calories your body
+        burns a day.
+      </p>
+    </div>
+  </div>
+</div>
+<!--TDEE CALC FORM-->
+
+<div class="tdee-calc-form">
+  <div class="container">
+    <div class="calc-content">
+      <form method="post" action="{%url 'tdee' %}">
+        {%csrf_token%}
+
+        <div class="calc-field">
+          <label for="age"> {{form.age.label}} </label>
+          {{form.age}}
+        </div>
+
+        <div class="calc-field">
+          <label for="sex"> {{form.sex.label}} </label>
+          {{form.sex}}
+        </div>
+
+        <div class="calc-field">
+          <label for="weight"> {{form.weight.label}} </label>
+          {{form.weight}}
+        </div>
+
+        <div class="calc-field">
+          <label for="height"> {{form.height.label}} </label>
+          {{form.height}}
+        </div>
+
+        <div class="calc-field">
+          <label for="activity_lvl"> {{form.activity_lvl.label}} </label>
+          {{form.activity_lvl}}
+        </div>
+
+        <button class="calc-submit" type="submit">Calculate</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
