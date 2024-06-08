@@ -1,0 +1,25 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+
+<div class="forums-container-general">
+  <form method="GET" action="{% url 'forums' %}">
+    {% csrf_token %}
+    <input type="text" name="q" placeholder="Search Rooms" />
+  </form>
+
+  <div class="forums-container">
+    <div>{% include 'counter/topics_bar.html' %}</div>
+
+    <!-- 2nd column, rooms-->
+    <div>
+      <!--# of Rooms and Create Room-->
+      <h5>{{room_count}} rooms available</h5>
+
+      <a href=" {% url 'create-room' %}"> Create Room</a>
+
+      {% include 'counter/room_feed.html' %}
+    </div>
+
+    <div>{% include 'counter/activity_feed.html' %}</div>
+  </div>
+</div>
+{% endblock %}

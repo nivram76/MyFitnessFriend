@@ -23,9 +23,8 @@
   </div>
 </div>
 <!--TDEE CALC FORM-->
-
-<div class="tdee-calc-form">
-  <div class="container">
+<div class="container">
+  <div class="tdee-calc-form">
     <div class="calc-content">
       <form method="post" action="{%url 'tdee' %}">
         {%csrf_token%}
@@ -57,6 +56,15 @@
 
         <button class="calc-submit" type="submit">Calculate</button>
       </form>
+    </div>
+
+    <div>
+      <div class="tdee-result">
+        {% if result %}
+        <h3>Your TDEE Result:</h3>
+        <p>{{ result }} calories/day</p>
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>

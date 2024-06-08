@@ -1,0 +1,13 @@
+{% extends 'main.html' %} {% block content %}
+
+<div class="container">
+  <h1>{{user.username}}</h1>
+
+  <div class="profile-container">
+    <div>{% include 'counter/topics_bar.html' %}</div>
+    <div>{% include 'counter/room_feed.html' %}</div>
+    <div>{% include 'counter/activity_feed.html' %}</div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -57,16 +57,11 @@ img {
   color: var(--primary-color);
 }
 
-.logo {
-  position: relative; 
-  margin-bottom: -20px; 
-}
 
 /* Additional styles for the image */
 .img-responsive.logo {
   max-width: 100%; /* Ensure the image stays responsive */
-   
-
+  
 }
 
 form {

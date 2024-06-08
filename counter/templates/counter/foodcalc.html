@@ -4,17 +4,19 @@
 
 {% block content %}
 
-        <div class="row justify-content-center">        
-            <div class="col-md-8 text-center">
-                <img src="{% static 'images/logo.jpg'%}" class=" img-responsive logo mb-5 mt-5" />
+        <div class="container">        
+                <h1 class="calorie-calc-title"> Calorie Calculator</h1>
+                
                 <form method="post">
                     {%csrf_token%}
-                    <div class="input-group input-group-lg mb-5">
+                    <div class="calorie-search-container">
                         <input type="text" name="query" class="form-control inputstyle"
-                            placeholder="search for calories in your food..." required>
-                        <button class="btn whoop" type="submit" id="button-addon2">Find calories</button>
+                            placeholder="Enter: Serving Size (Optional) and Food" required>
+                        <button class="calc-submit" type="submit" id="button-addon2">Find calories</button>
                     </div>
                 </form>
+                
+                
                 {%if api%}
                 {%if api == "Error"%}
                 <div class="alert alert-warning"> Oh no! something went wrong. Please try again. </div>
@@ -28,7 +30,7 @@
                         retention, or possibly longer term issues relating to cardiovascular health.
                     </div>
                 </div>
-            </div>
+        
             
             <div class="row justify-content-center mt-5 mb-5">
                 <div class="col-md-10 caloriescont shadow rounded">
@@ -101,6 +103,7 @@
                 {%endif%}
                 {%endif%}
             </div>
+        </div>
 
 
 {% endblock %}

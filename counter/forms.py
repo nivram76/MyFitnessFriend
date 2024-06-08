@@ -1,4 +1,15 @@
+from django.forms import ModelForm
 from django import forms
+from .models import Room
+
+
+class RoomForm(ModelForm):
+    class Meta: #specify the model we want to create a form for (Room Model)
+        model= Room
+
+        fields= '__all__' #creates a form based off the fields in the Room model
+        exclude= ['host', 'participants']
+
 
 class TDEEForm(forms.Form):
     age= forms.IntegerField(label='Age:')
@@ -28,3 +39,4 @@ class TDEEForm(forms.Form):
         if height < 0:
             raise forms.ValidationError("Height must be a non-negative number.")
         return height
+        
