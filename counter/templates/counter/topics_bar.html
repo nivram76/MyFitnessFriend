@@ -4,18 +4,26 @@
   </div>
   <ul class="topics__list">
     <li>
-      <a href="{% url 'forums' %}" class="active"
-        >All <span>{{topics.count}}</span></a
+      <a
+        href="{% url 'forums' %}"
+        class="{% if not request.GET.q %}active{% endif %}"
       >
+        All <span>{{ topics.count }}</span>
+      </a>
     </li>
+
     {% for topic in topics %}
     <li>
-      <a href="{% url 'forums' %}?q={{topic.name}}"
-        >{{topic.name}} <span>{{topic.room_set.all.count}}</span></a
+      <a
+        href="{% url 'forums' %}?q={{ topic.name }}"
+        class="{% if request.GET.q == topic.name %}active{% endif %}"
       >
+        {{ topic.name }} <span>{{ topic.room_set.all.count }}</span>
+      </a>
     </li>
     {% endfor %}
   </ul>
+
   <a class="btn btn--link" href="topics.html">
     More
     <svg

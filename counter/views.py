@@ -42,7 +42,7 @@ def loginPage(request):
 
         if user is not None: # user is a real user with valid credentials so log them in
             login(request, user)
-            return redirect('forums') # TO-CHANGE TO HOMEPAGE WHEN ADDED
+            return redirect('home') 
  
         else: # not valid credentials
             messages.error(request, "Username or password doesn't exist.")
@@ -90,6 +90,8 @@ def registerUser(request):
 
 
 
+def home(request):
+    return render(request, 'counter/home.html')
 
 
 

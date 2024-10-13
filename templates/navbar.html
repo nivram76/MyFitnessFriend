@@ -4,7 +4,7 @@
   <nav class="navbar">
     <div class="container">
       <div class="logo">
-        <a href=" #home">
+        <a href="{% url 'home' %}">
           <img
             src="{% static 'images/mfflogo.png'%}"
             class="mfflogo"
@@ -22,11 +22,7 @@
       <div class="main-menu">
         <ul>
           <li>
-            <a href="#home">Home</a>
-          </li>
-
-          <li>
-            <a href="#about">About</a>
+            <a href="{% url 'home' %}">Home</a>
           </li>
 
           <li>
