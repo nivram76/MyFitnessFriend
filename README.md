@@ -1,16 +1,18 @@
 # MyFitnessFriend
-Fitness app that enables users to maintain a healthy diet and active lifestyle with its features.
 ![mfflogo](https://github.com/user-attachments/assets/47dacfec-3b6e-43ac-90f5-6a5797f1c1e4)
 
+Incorporated external APIs for real-time nutrition information 
+
+Deployed custom APIs using Django REST Framework.
+
+Front end has a dynamic HTML, CSS, JavaScript interface.
 
 Features Include:
 - forum discussion
 - nutrition and TDEE calculators
 - user authentication
   
-Incorporated external APIs for real-time nutrition information and deployed custom APIs using Django REST Framework.
 
-Front end has a dynamic HTML, CSS, JavaScript interface.
 
 
   
