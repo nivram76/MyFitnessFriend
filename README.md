@@ -8,10 +8,10 @@ Deployed custom APIs using Django REST Framework.
 Front end has a dynamic HTML, CSS, JavaScript interface.
 
 Features Include:
-- forum discussion
 - nutrition and TDEE calculators
-- user authentication
-  
+- forum discussion
+-  user authentication
+
 
 
 
